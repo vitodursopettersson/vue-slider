@@ -54,6 +54,9 @@ createApp({
                 this.currentSlide++;
             }
         },
+        setSlide(index) {
+            this.currentSlide = index
+        }
     }
 
 }).mount('#app')

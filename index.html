@@ -39,7 +39,7 @@
 
         <!-- Thumbnail -->
         <div v-for="(thumb, index) in slideGroupImage" v-bind:class="{ thumbactive: index === currentSlide}"
-          class="thumbnails">
+          class="thumbnails" v-on:click="setSlide(index)">
           <div class="overlay">
           </div>
           <img v-bind:src="thumb.img" v-bind:alt="thumb.title">
