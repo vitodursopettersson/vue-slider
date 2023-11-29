@@ -12,34 +12,59 @@
 </head>
 
 <body>
+  <div id="app">
 
-  <!-- Slider Container -->
-  <div class="container">
+    <!-- Slider Container -->
+    <div class="container">
 
-    <!-- Slider -->
-    <div class="group-slider"></div>
+      <!-- Slider -->
+      <div class="group-slider">
 
-    <!-- Thumbnails -->
-    <div class="group-thumbnails">
+        <!-- Slide -->
+        <div class="item active">
+          <div class="slide__text">
+            <h3 v-text="slideGroupImage[currentSlide].title"></h3>
+            <p v-text="slideGroupImage[currentSlide].description"></p>
+          </div>
+          <img v-bind:src="slideGroupImage[currentSlide].img" v-bind:alt="slideGroupImage[currentSlide].title">
+        </div>
+      </div>
 
-      <!-- Button Next Prev -->
-      <div class="prev"></div>
-      <div class="next"></div>
+      <!-- Thumbnails -->
+      <div class="group-thumbnails">
+
+        <!-- Button Next Prev -->
+        <div class="prev" v-on:click="prev"></div>
+        <div class="next" v-on:click="next"></div>
+
+        <!-- Thumbnail -->
+        <div v-for="(thumb, index) in slideGroupImage" v-bind:class="{ thumbactive: index === currentSlide}"
+          class="thumbnails">
+          <div class="overlay">
+          </div>
+          <img v-bind:src="thumb.img" v-bind:alt="thumb.title">
+        </div>
+
+
+      </div>
+
+    </div>
+
+    <!-- Button Container Slider Autoplay -->
+    <div class="button-container">
+
+      <!-- Play Button -->
+      <button id="play">Play</button>
+
+      <!-- Stop Button -->
+      <button id="stop">Stop</button>
 
     </div>
 
   </div>
 
-  <!-- Button Container Slider Autoplay -->
-  <div class="button-container">
-
-    <!-- Play Button -->
-    <button id="play">Play</button>
-
-    <!-- Stop Button -->
-    <button id="stop">Stop</button>
-
-  </div>
+  <!-- Link Vue js -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
   <!-- Link Javascript -->
   <script src="js/main.js"></script>
