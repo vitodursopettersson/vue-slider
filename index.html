@@ -21,7 +21,7 @@
       <div class="group-slider">
 
         <!-- Slide -->
-        <div class="item active">
+        <div class="item active" v-on:mouseover="stopAutoplay" v-on:mouseleave="startAutoplay">
           <div class="slide__text">
             <h3 v-text="slideGroupImage[currentSlide].title"></h3>
             <p v-text="slideGroupImage[currentSlide].description"></p>
@@ -47,17 +47,6 @@
 
 
       </div>
-
-    </div>
-
-    <!-- Button Container Slider Autoplay -->
-    <div class="button-container">
-
-      <!-- Play Button -->
-      <button id="play">Play</button>
-
-      <!-- Stop Button -->
-      <button id="stop">Stop</button>
 
     </div>
 

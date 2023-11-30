@@ -5,7 +5,7 @@ const { createApp } = Vue;
 createApp({
     data() {
         let currentSlide = 0;
-
+        let currentInterval = null
         const slideGroupImage = [
             {
                 title: 'Lago di Lentini',
@@ -36,19 +36,20 @@ createApp({
         return {
             slideGroupImage,
             currentSlide,
+            currentInterval,
         }
 
     },
     methods: {
         prev() {
-            if (this.currentSlide == 0) {
-                this.currentSlide = 4;
+            if (this.currentSlide === 0) {
+                this.currentSlide = this.slideGroupImage.length;
             } else {
                 this.currentSlide--;
             }
         },
         next() {
-            if (this.currentSlide == 4) {
+            if (this.currentSlide === this.slideGroupImage.length) {
                 this.currentSlide = 0;
             } else {
                 this.currentSlide++;
@@ -56,7 +57,17 @@ createApp({
         },
         setSlide(index) {
             this.currentSlide = index
+        },
+        startAutoplay() {
+            clearInterval(this.currentInterval);
+            this.currentInterval = setInterval(this.next, 3000);
+        },
+        stopAutoplay() {
+            clearInterval(this.currentInterval);
         }
+    },
+    mounted() {
+        this.startAutoplay()
     }
 
 }).mount('#app')
